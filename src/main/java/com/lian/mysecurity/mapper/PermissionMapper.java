@@ -1,0 +1,67 @@
+package com.lian.mysecurity.mapper;
+
+import com.lian.mysecurity.model.Permission;
+import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * @author Ted
+ * @version 1.0
+ * @date 2020/6/2 22:05
+ */
+@Repository
+public class PermissionMapper {
+    private static HashMap<Long,Permission> permissionTable = new HashMap<>();
+    
+    static {
+        permissionTable.put(1L,new Permission(1L,"superAdmin","",System.currentTimeMillis()));
+        permissionTable.put(2L,new Permission(2L,"运营","",System.currentTimeMillis()));
+        permissionTable.put(3L,new Permission(3L,"admin","",System.currentTimeMillis()));
+        permissionTable.put(4L,new Permission(4L,"售后","",System.currentTimeMillis()));
+        permissionTable.put(5L,new Permission(5L,"售前","",System.currentTimeMillis()));
+        permissionTable.put(6L,new Permission(6L,"技术","",System.currentTimeMillis()));
+        permissionTable.put(7L,new Permission(7L,"视觉","",System.currentTimeMillis()));
+        permissionTable.put(8L,new Permission(8L,"教务","",System.currentTimeMillis()));
+    }
+    /**
+     * 新增权限
+     * @param permission
+     * @return
+     */
+    public Permission add(Permission permission){
+        Permission put = permissionTable.put(permission.getId(), permission);
+        return put;
+    }
+
+    /**
+     * 修改权限
+     * @param permission
+     * @return
+     */
+    public Permission update(Permission permission){
+        Permission put = permissionTable.put(permission.getId(), permission);
+        return put;
+    }
+
+    /**
+     * 查询权限列表
+     * @return
+     */
+    public List<Permission> list(){
+        List<Permission> collect = permissionTable.entrySet().stream().map(e -> e.getValue()).collect(Collectors.toList());
+        return collect;
+    }
+
+    /**
+     * 删除权限
+     * @param id
+     * @return
+     */
+    public Permission delete(Long id){
+        Permission remove = permissionTable.remove(id);
+        return remove;
+    }
+}
