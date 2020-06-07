@@ -18,6 +18,7 @@ public class BusinessException extends  BaseException {
         super(responseEnum, args, message);
     }
 
+
     public BusinessException(IResponseEnum responseEnum, Object[] args, String message, Throwable cause) {
         super(responseEnum, args, message, cause);
     }
