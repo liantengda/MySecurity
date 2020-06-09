@@ -1,5 +1,6 @@
 package com.lian.mysecurity.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -19,9 +20,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-
+    @Value("${swagger.enable}")
     private boolean enableSwagger;
-
 
 
     @Bean
@@ -34,10 +34,10 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.lian.mysecurity.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("赛库亚的swagger文档")
-                        .description("这是赛库亚企业项目的文档")
+                        .title("mySecurity的swagger文档")
+                        .description("这是mySecurity项目的文档")
                         .version("9.0")
-                        .contact(new Contact("测试环境后台","http://test.saquoia.com/","1666893831@qq.com"))
+                        .contact(new Contact("测试环境后台","http://lian.mysecurity.com/","1666893831@qq.com"))
                         .license("The Apache License")
                         .licenseUrl("http://www.baidu.com")
                         .build());
